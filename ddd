@@ -1,0 +1,77 @@
+
+Cse <csebubt280@gmail.com>
+10:04 (6 minutes ago)
+to me, tathbirasultana@gmail.com
+
+#include<iostream>
+using namespace std;
+
+class OpOverload {
+private:
+    int var1;
+    int var2;
+
+public:
+    OpOverload() {
+        var1 = 0;
+        var2 = 0;
+    }
+
+    OpOverload(int v1, int v2) {
+        var1 = v1;
+        var2 = v2;
+    }
+
+    void display() {
+        cout << "var1 = " << var1 << ", var2 = " << var2 << endl;
+    }
+
+    OpOverload operator++(int) { // postfix increment
+        int sum = 280; // replace with the last three digits of your ID
+        OpOverload temp = *this;
+        var1 += sum;
+        var2 += sum;
+        return temp;
+    }
+
+    OpOverload& operator++() { // prefix increment
+        int sum = 280; // replace with the last three digits of your ID
+        var1 += sum;
+        var2 += sum;
+        return *this;
+    }
+
+    OpOverload operator--(int) { // postfix decrement
+        int sum = 280; // replace with the last three digits of your ID
+        OpOverload temp = *this;
+        var1 -= sum;
+        var2 -= sum;
+        return temp;
+    }
+
+    OpOverload& operator--() { // prefix decrement
+        int sum = 280; // replace with the last three digits of your ID
+        var1 -= sum;
+        var2 -= sum;
+        return *this;
+    }
+};
+
+int main() {
+    OpOverload obj(10, 20);
+    obj.display(); // output: var1 = 10, var2 = 20
+
+    obj++;
+    obj.display(); // output: var1 = 290, var2 = 300
+
+    ++obj;
+    obj.display(); // output: var1 =570, var2 = 580
+
+    obj--;
+    obj.display(); // output: var1 = 290, var2 = 143
+
+    --obj;
+    obj.display(); // output: var1 = 10, var2 = 20
+
+    return 0;
+}
